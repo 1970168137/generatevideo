@@ -24,9 +24,18 @@
 配置文件是：demo-config-dev.txt
 其中：有用到AI大模型，建议配置为火山的ds，调用速度比较正常，详细看配置。
 
-## 版权声明：heygem请遵守heygem官方的使用协议
+# 产品演示
+<video width="400" controls>
+  <source src="https://github.com/1970168137/generatevideo/blob/main/info/show.mp4" type="video/mp4">
+  您的浏览器不支持 HTML5 视频标签。
+</video>
 
-![产品图片]([http://aaa.jpg ](https://github.com/1970168137/generatevideo/blob/main/info/A1.png)"产品图片")
+# 产品截图
+<img src="https://github.com/1970168137/generatevideo/blob/main/info/A1.png" alt="产品1" title="产品1" width="400" />
+<img src="https://github.com/1970168137/generatevideo/blob/main/info/A2.png" alt="产品2" title="产品2" width="700" />
+<img src="https://github.com/1970168137/generatevideo/blob/main/info/A3.png" alt="产品3" title="产品3" width="700" />
+<img src="https://github.com/1970168137/generatevideo/blob/main/info/A4.png" alt="产品3" title="产品4" width="800" />
 
-
+### 其他：
+#### 版权声明：heygem请遵守heygem官方的使用协议
 
