@@ -25,10 +25,7 @@
 其中：有用到AI大模型，建议配置为火山的ds，调用速度比较正常，详细看配置。
 
 # 产品演示
-<video width="400" controls>
-  <source src="https://github.com/1970168137/generatevideo/blob/main/info/show.mp4" type="video/mp4">
-  您的浏览器不支持 HTML5 视频标签。
-</video>
+### 最后可以生成的效果： https://live.csdn.net/v/487232 （开源版本，少了动态的大标题和动态图片插入）
 
 # 产品截图
 <img src="https://github.com/1970168137/generatevideo/blob/main/info/A1.png" alt="产品1" title="产品1" width="400" />
