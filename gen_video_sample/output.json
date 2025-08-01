@@ -1,0 +1,6 @@
+{
+    "code": 0,
+    "msg": "success",
+    "reference_audio_text": "上述检查项目未完成整改的原因可能是由于业务系统权限不足或者是其他客观因素限制等原因导致的。",
+    "asr_format_audio_url": "/code/sessions/20250320/3c82e3e1da4a4db1b5f58b3115810a0c/format_denoise_raw_part0.wav"
+}

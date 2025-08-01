@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI文案生成与数字人配置</title>
+    <link href="#(CPATH)/aiv/css/bootstrap.min.css" rel="stylesheet">
+    <link href="#(CPATH)/aiv/css/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 20px;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            border: none;
+        }
+        .form-control, .form-select {
+            border-radius: 8px;
+            padding: 12px 15px;
+            border: 1px solid #ced4da;
+            transition: all 0.3s;
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: #86b7fe;
+            box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.15);
+        }
+        .form-label {
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        .btn-primary {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+            border-radius: 8px;
+            padding: 10px 25px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #0b5ed7;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(13, 110, 253, 0.25);
+        }
+        .header-section {
+            background: linear-gradient(135deg, #0d6efd, #6c5ce7);
+            color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        .required-star {
+            color: #dc3545;
+            margin-left: 4px;
+        }
+        .section-title {
+            font-size: 1.25rem;
+            color: #495057;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e9ecef;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header-section text-center">
+        <h1><i class="bi bi-robot me-2"></i>AI文案生成与数字人配置</h1>
+        <p class="lead">输入您的需求，AI将为您生成专业文案并配置数字人展示</p>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body p-4">
+                    <form>
+                        <!-- AI写文案部分 -->
+                        <div class="mb-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <h4 class="section-title mb-0"><i class="bi bi-pencil-square text-primary me-2"></i>AI写文案</h4>
+                            </div>
+                            <label class="form-label">请输入您的需求描述<span class="required-star">*</span></label>
+                            <textarea id="query" class="form-control" placeholder="例如：写一个100个字的，介绍我们是优秀的独立站服务提供商文案。" required></textarea>
+                            <div class="mt-2 text-muted small">
+                                <i class="bi bi-info-circle me-1"></i>请尽可能详细地描述您的需求，AI会根据描述生成文案
+                            </div>
+                        </div>
+
+                        <!-- 文案预览部分 -->
+                        <div class="mb-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <h4 class="section-title mb-0"><i class="bi bi-file-earmark-text text-success me-2"></i>AI生成文案</h4>
+                                <button type="button" onclick="genai();" class="btn btn-sm btn-outline-primary ms-auto">
+                                    <i class="bi bi-arrow-repeat me-1"></i>生成文案
+                                </button>
+                            </div>
+                            <textarea id="scriptText" class="form-control" placeholder="AI生成的文案将显示在这里..." ></textarea>
+                            <!--<div class="mt-2 d-flex justify-content-end">
+                                <button type="button" class="btn btn-sm btn-outline-success me-2">
+                                    <i class="bi bi-clipboard me-1"></i>复制文案
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary">
+                                    <i class="bi bi-download me-1"></i>导出文本
+                                </button>
+                            </div>-->
+                        </div>
+
+                        <!-- 数字人配置部分 -->
+                        <div class="mb-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <h4 class="section-title mb-0"><i class="bi bi-person-video2 text-info me-2"></i>数字人配置</h4>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <label class="form-label">选择数字人形象： 先上传数人视频：<a href="/plResource">上传</a> 再配置数字人：<a href="/plVideo"> 配置数字人</a><span class="required-star">*</span></label>
+                                    <select class="form-select" id="video_id" required>
+                                        #for(res : videoList)
+                                        <option value="#(res.sourePath)")>#(res.name)</option>
+                                        #end
+                                    </select>
+                                </div>
+                                <!--<div class="col-md-6 mb-3">
+                                    <label class="form-label">背景音乐</label>
+                                    <select class="form-select" id="audio_id" >
+                                        <option value="">&#45;&#45; 请选择 &#45;&#45;</option>
+                                        #for(res : audiolist)
+                                        <option value="#(res.id)" >#(res.name)</option>
+                                        #end
+                                    </select>
+                                </div>-->
+                            </div>
+
+                        </div>
+
+                        <!-- 提交按钮 -->
+                        <div class="d-flex justify-content-between mt-4">
+                            <button type="button" onclick="goback();" class="btn btn-lg btn-outline-secondary">
+                                <i class="bi bi-arrow-left me-2"></i>返回
+                            </button>
+                            <button type="button" onclick="genvideo();" class="btn btn-lg btn-primary px-4">
+                                <i class="bi bi-lightning me-2"></i>生成视频
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="mt-4 text-center text-muted small">
+                <i class="bi bi-info-circle me-1"></i>系统将在10-30分钟内完成文案生成和视频渲染
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function genai() {
+        if($("#query").val().trim().length == 0) {
+            layer.msg("请输入需求描述");
+            return;
+        }
+        var index = layer.load(1); // 显示加载动画
+        $.ajax({
+            type:'post',
+            url:'/plScriptgen/getAnswer',
+            data:{"query":$("#query").val()},
+            cache:false,
+            async:true,
+            success:function(json){
+                $("#scriptText").val(json.data);
+                layer.close(index); // 关闭加载动画
+            },
+            error:function(){
+                alert("执行错误！");
+                layer.close(index); // 关闭加载动画
+            }
+        });
+    }
+
+    function genvideo() {
+        if($("#scriptText").val().trim().length == 0) {
+            layer.msg("请输入文案");
+            return;
+        }
+        $.ajax({
+            type:'post',
+            url:'/plScriptgen/genvideo',
+            data:{"scriptText":$("#scriptText").val(), "videoId":$("#video_id").val()},
+            cache:false,
+            async:true,
+            success:function(json){
+                layer.alert("已经提交成功，等待执行，不需要重复提交")
+
+                layer.confirm('已经提交成功，你需要查看吗？', {
+                    btn: ['确认', '取消'], // 自定义按钮文本
+                    title: '操作确认'
+                }, function(index) {
+                    window.location.href = '/plScriptgen';
+                }, function() {
+                });
+            },
+            error:function(){
+                alert("执行错误！");
+            }
+        });
+    }
+
+    function goback() {
+        if (window.history.length > 1) {
+            window.history.back();
+        } else {
+            window.location.href = '/plScript';
+        }
+    }
+
+
+</script>
+<script src="#(CPATH)/aiv/css/bootstrap.bundle.min.js"></script>
+<!-- 引入Layer -->
+<script src="../../aiv/js/layer-v3.1.1/layer/layer.js"></script>
+</body>
+</html>

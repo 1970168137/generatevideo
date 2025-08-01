@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数字人视频系统 - 登录</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-light: #4895ef;
+            --secondary: #3f37c9;
+            --dark: #1d3557;
+            --light: #f8f9fa;
+            --card-shadow: 0 0.5rem 1.5rem rgba(22, 28, 45, 0.1);
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        .login-container {
+            max-width: 420px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .card {
+            border-radius: 16px;
+            border: none;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 1rem 3rem rgba(22, 28, 45, 0.15);
+        }
+
+        .card-header {
+            background: linear-gradient(120deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border: none;
+        }
+
+        .card-body {
+            padding: 2.5rem;
+        }
+
+        .system-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #ffffff, #e0f7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .system-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .form-icon {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .icon-wrapper {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.3);
+        }
+
+        .icon-wrapper i {
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .form-control {
+            padding: 0.85rem 1.25rem;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.15);
+        }
+
+        .form-control-password {
+            padding-left: 3rem;
+        }
+
+        .input-group-password {
+            position: relative;
+        }
+
+        .password-icon {
+            position: absolute;
+            left: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            z-index: 10;
+        }
+
+        .btn-login {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 12px;
+            padding: 0.85rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(67, 97, 238, 0.4);
+        }
+
+        .btn-login:active {
+            transform: translateY(0);
+        }
+
+        .footer-text {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #94a3b8;
+            z-index: 10;
+        }
+
+        .animation-container {
+            position: relative;
+            height: 120px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.7;
+            z-index: -1;
+        }
+
+        .element-1 {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #4895ef, #3a0ca3);
+            border-radius: 20px;
+            top: 10px;
+            left: 10%;
+            animation: float 15s infinite ease-in-out;
+            transform: rotate(25deg);
+        }
+
+        .element-2 {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #4cc9f0, #4361ee);
+            border-radius: 50%;
+            top: 30px;
+            right: 15%;
+            animation: float 18s infinite ease-in-out;
+            animation-delay: 2s;
+        }
+
+        .element-3 {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #f72585, #7209b7);
+            border-radius: 15px;
+            bottom: 20px;
+            left: 40%;
+            animation: float 12s infinite ease-in-out;
+            animation-delay: 4s;
+            transform: rotate(45deg);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .card-body {
+                padding: 1.75rem;
+            }
+            .system-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="login-container">
+    <div class="animation-container">
+        <div class="floating-element element-1"></div>
+        <div class="floating-element element-2"></div>
+        <div class="floating-element element-3"></div>
+    </div>
+
+    <div class="card card-shadow">
+        <div class="card-header">
+            <h1 class="system-title">数字人视频系统</h1>
+            <p class="system-subtitle">智能视频创作与管理平台</p>
+        </div>
+
+        <div class="card-body">
+            <div class="form-icon">
+                <div class="icon-wrapper">
+                    <i class="fas fa-video"></i>
+                </div>
+            </div>
+
+            <form id="loginForm" action="/login/doLogin" method="post">
+                <div class="mb-4">
+                    <label class="form-label fw-bold mb-2">系统登录密码</label>
+                    <div class="input-group-password">
+                        <i class="fas fa-lock password-icon"></i>
+                        <input type="password"
+                               class="form-control form-control-password"
+                               id="password"
+                               name ="password"
+                               placeholder="请输入您的登录密码"
+                               required>
+                        <i class="fas fa-eye-slash password-toggle" id="togglePassword"></i>
+                    </div>
+                    <div class="form-text text-end mt-1">
+                        <a href="#" class="text-decoration-none text-primary">忘记密码?</a>
+                    </div>
+                </div>
+
+                <div class="d-grid mb-3">
+                    <button type="submit" class="btn btn-login">
+                        <i class="fas fa-sign-in-alt me-2"></i>登录系统
+                    </button>
+                </div>
+
+                <div class="footer-text">
+                    <i class="fas fa-shield-alt me-1"></i>安全提示：请勿在公共设备保存密码
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 密码显示/隐藏切换
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('password');
+
+    togglePassword.addEventListener('click', function() {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        this.classList.toggle('fa-eye');
+        this.classList.toggle('fa-eye-slash');
+    });
+
+    // 表单提交处理
+    const loginForm = document.getElementById('loginForm');
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        const key = document.getElementById('password').value.trim();
+        if(!key) {
+            e.preventDefault();
+            alert('请输入访问密钥');
+        }
+    });
+
+</script>
+</body>
+</html>

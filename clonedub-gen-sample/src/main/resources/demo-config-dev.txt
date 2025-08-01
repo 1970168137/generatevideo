@@ -1,0 +1,11 @@
+
+# config
+jdbcUrl = jdbc:mysql://127.0.0.1:3306/genvideosample?characterEncoding=utf8&useSSL=false&zeroDateTimeBehavior=convertToNull
+user=root
+password=XXX
+devMode = true
+
+#使用火山引擎的ds api或者ds官方的ds api：可选 huoshan 和 deepseek  ，将要使用火山引擎ds
+deepseekType = huoshan
+deepseeskApiKey = XXXXXXXX
+deepseeskApiUrl = https://ark.cn-beijing.volces.com/api/v3/chat/completions

@@ -1,0 +1,151 @@
+/* 全局样式 */
+body {
+    background-color: #f8f9fa;
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+.container-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+.card-shadow {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    border: none;
+}
+.section-header {
+    border-bottom: 2px solid #0d6efd;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    position: relative;
+}
+.section-header:after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100px;
+    height: 2px;
+    background: #0dcaf0;
+}
+
+/* 步骤导航样式 */
+.step-nav {
+    background: linear-gradient(135deg, #ffffff, #f1f8ff);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08);
+}
+.step-badge {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.5rem;
+    background: #0d6efd;
+    color: white;
+}
+.btn-hover-scale {
+    transition: transform 0.2s;
+}
+.btn-hover-scale:hover {
+    transform: scale(1.05);
+}
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.04);
+}
+.text-ellipsis {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.step-title {
+    color: #495057;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* 操作按钮样式 */
+.btn-action {
+    padding: 10px 25px;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+.btn-action:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 表格样式优化 */
+.table-card {
+    border-radius: 10px;
+    overflow: hidden;
+}
+.table th {
+    background-color: #f1f8ff;
+    color: #0d6efd;
+    font-weight: 600;
+}
+
+/* 添加自定义提示框样式 */
+#customToast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    min-width: 250px;
+    z-index: 9999;
+}
+
+/* 返回主页按钮 */
+.home-btn {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    z-index: 100;
+    padding: 8px 20px;
+    background: linear-gradient(135deg, #4b6cb7, #182848);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+.home-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #3a56a0, #121d3a);
+}
+.home-btn i {
+    margin-right: 8px;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .step-nav .d-flex {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .step-nav .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    .header-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .home-btn {
+        position: relative;
+        top: unset;
+        right: unset;
+        margin-top: 20px;
+        width: 100%;
+        text-align: center;
+    }
+}

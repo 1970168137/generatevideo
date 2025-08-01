@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资源管理系统</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../aiv/css/list.css" rel="stylesheet">
+</head>
+<body>
+<div class="container container-main">
+    <!-- 顶部标题 -->
+    <div class="text-center mb-5">
+        <h1 class="display-5 fw-bold text-primary">
+            <i class="fas fa-folder-open me-2"></i>资源管理
+        </h1>
+        <p class="lead text-muted">高效管理您的各类资源文件</p>
+    </div>
+
+    <!-- 资源管理卡片 -->
+    <div class="card card-shadow mb-5">
+        <div class="card-header bg-white d-flex justify-content-between align-items-center flex-wrap">
+            <h3 class="section-header mb-0">
+                <i class="fas fa-boxes text-primary me-2"></i>资源列表
+            </h3>
+            <div class="d-flex align-items-center header-buttons">
+                <a href="/plResource/add" class="btn btn-primary btn-action me-2">
+                    <i class="fas fa-plus-circle me-2"></i>添加
+                </a>
+                <a href="/plScriptgen/toText2video" class="btn btn-outline-primary btn-action me-2">
+                    <i class="fas fa-level-up-alt me-2"></i>返回
+                </a>
+                <a href="/main" class="btn btn-outline-primary btn-action">
+                    <i class="fas fa-home me-2"></i>首页
+                </a>
+
+            </div>
+        </div>
+        <div class="card-body">
+            <!-- 数据表格 -->
+            <div class="table-card">
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
+                    <tr>
+                        <th style="width: 80px;">ID</th>
+                        <th>资源名称</th>
+                        <th>类型</th>
+                        <th>路径</th>
+                        <th >状态</th>
+                        <th >创建时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    #for(res : resourceList)
+                    <tr>
+                        <td class="fw-bold">#(res.id)</td>
+                        <td>#(res.name)</td>
+                        <td>
+                            #switch(res.type)
+                            #case("1") <span class="badge-resource bg-info text-white">图片</span>
+                            #case("2") <span class="badge-resource bg-primary text-white">视频</span>
+                            #case("3") <span class="badge-resource bg-warning text-white">音频</span>
+                            #end
+                        </td>
+                        <td>
+                            <a href="/file/download?filename=#(res.path)" class="path-link text-truncate d-block" style="max-width: 200px;">
+                                <i class="fas fa-download me-1"></i>#(res.path)
+                            </a>
+                        </td>
+                        <td>
+                            #if(res.state == 'Y')
+                            <span class="status-badge bg-success text-white">启用</span>
+                            #else
+                            <span class="status-badge bg-secondary text-white">停用</span>
+                            #end
+                        </td>
+                        <td>#date(res.created_at, "yyyy-MM-dd HH:mm")</td>
+                        <td class="action-buttons">
+                            <a href="/plResource/edit/#(res.id)" class="btn btn-sm btn-warning">
+                                <i class="fas fa-edit"></i> 编辑
+                            </a>
+                            <button onclick="confirmDelete(#(res.id))" class="btn btn-sm btn-danger">
+                                <i class="fas fa-trash-alt"></i> 删除
+                            </button>
+                        </td>
+                    </tr>
+                    #end
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 引入Bootstrap JS -->
+<script src="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    function confirmDelete(id) {
+        if (confirm('确定删除该资源？')) {
+            window.location.href = '/plResource/delete/' + id;
+        }
+    }
+</script>
+</body>
+</html>

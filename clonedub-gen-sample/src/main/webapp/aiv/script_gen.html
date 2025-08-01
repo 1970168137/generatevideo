@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>AI文案优化记录</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .card-table {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        .config-preview {
+            max-width: 200px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .status-badge {
+            font-size: 0.8em;
+            padding: 4px 8px;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>
+            <i class="bi bi-magic"></i>
+            视频文案列表
+        </h2>
+        <a href="/main" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left"></i> 返回主页
+        </a>
+    </div>
+
+    <div class="card-table">
+        <table class="table table-hover">
+            <thead class="table-light">
+            <tr>
+                <th>ID</th>
+                <th>视频文案</th>
+                <th>状态</th>
+                <th>创建时间</th>
+            </tr>
+            </thead>
+            <tbody>
+            #for(gen : genList)
+            <tr>
+                <td>#(gen.id)</td>
+                <td>
+                    <div>#(gen.all ??)</div>
+                </td>
+                <td>
+                        <span>
+                            #(gen.state == 'Y' ? '等待生成' : '已处理')
+                        </span>
+                </td>
+                <td>#date(gen.created_at, "yyyy-MM-dd HH:mm")</td>
+            </tr>
+            #end
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
