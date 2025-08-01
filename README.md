@@ -6,9 +6,9 @@
 #### 视频文案管理系统 clonedub-gen-sample
 #### 数据库脚本文件 genvideosample.sql
 
-视频生成端项目部署前提：
-1、	安装heygem docker方式安装，具体安装见heygem官方文档，建议采用默认路径安装。
-2、	安装FFmpeg
+#### 视频生成端项目部署前提：
+#### 1、	安装heygem docker方式安装，具体安装见heygem官方文档，建议采用默认路径安装。
+#### 2、	安装FFmpeg
 
 # 部署要求：
 ## 视频生成端项目(gen_video_sample)：
